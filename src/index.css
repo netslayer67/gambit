@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --primary: 348 80% 45%;
+        /* #C8102E */
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 0%;
+        --secondary-foreground: 0 0% 100%;
+        --tertiary: 0 0% 100%;
+        --tertiary-foreground: 0 0% 0%;
+        --background: 0 0% 98%;
+        --foreground: 0 0% 7%;
+        --muted: 0 0% 40%;
+        --border: 0 0% 85%;
+
+        --success: 142 50% 25%;
+        --warning: 45 80% 50%;
+        --error: 345 60% 30%;
+        --info: 220 70% 40%;
+
+        --gold: 45 100% 50%;
+        --platinum: 0 0% 89%;
+        --onyx: 220 10% 5%;
+        --ivory: 60 100% 97%;
+        --velvet: 345 40% 25%;
+        --pearl: 240 20% 97%;
+
+        --glass: 0 0% 100% / 0.08;
+        --glass-dark: 0 0% 0% / 0.25;
+
+        --gradient-start: 348 80% 45%;
+        --gradient-mid: 0 0% 0%;
+        --gradient-end: 0 0% 100%;
+
+        --overlay-dark: 0 0% 0% / 0.6;
+        --overlay-light: 0 0% 100% / 0.6;
+    }
+
+    .dark {
+        --background: 220 10% 5%;
+        --foreground: 0 0% 96%;
+        --muted: 0 0% 65%;
+        --border: 0 0% 20%;
+        --highlight: 348 80% 45%;
+
+        --gradient-start: 220 80% 60%;
+        --gradient-mid: 220 30% 25%;
+        --gradient-end: 220 10% 10%;
+
+        --overlay-dark: 0 0% 100% / 0.05;
+        --overlay-light: 0 0% 100% / 0.15;
+
+        --glass: var(--glass-dark);
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Bebas Neue', cursive;
+    }
+}
+
+@layer components {
+
+    /* 🟦 Liquid Glass Base */
+    .glass-base {
+        @apply bg-[hsl(var(--glass))] backdrop-blur-lg border border-white/20 rounded-2xl shadow-lg;
+    }
+
+    /* 🔹 Overlay Gradient */
+    .glass-overlay {
+        background: linear-gradient(135deg,
+                hsl(var(--gradient-start) / 0.15),
+                hsl(var(--gradient-end) / 0.1));
+        mix-blend-mode: overlay;
+    }
+
+    /* 🔹 Footer & Navbar */
+    .glass-footer {
+        @apply glass-base relative rounded-3xl px-4 py-3;
+    }
+
+    .navbar-glass {
+        @apply glass-base flex items-center justify-between px-4 py-3 md:px-8 sticky top-0 z-50;
+    }
+
+    /* 🔘 Button */
+    .btn-glass {
+        @apply glass-base relative rounded-xl px-4 py-2 font-medium text-foreground transition-all duration-300;
+    }
+
+    .btn-glass:hover {
+        @apply scale-[1.02] shadow-xl;
+    }
+
+    .btn-glass:active {
+        @apply scale-95;
+    }
+
+    /* 🎯 Badge */
+    .badge-glass {
+        @apply glass-base text-xs px-3 py-1 rounded-full font-medium;
+    }
+
+    /* 📝 Input */
+    .input-glass {
+        @apply glass-base w-full px-4 py-2 rounded-xl text-sm placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary;
+    }
+
+    /* 🎨 Decorative BG */
+    .hero-pattern {
+        background-image:
+            radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 0%, transparent 50%);
+    }
+
+    .blob-bg {
+        background: radial-gradient(ellipse 800px 600px at 50% 0%,
+                hsl(var(--primary) / 0.15),
+                transparent);
+    }
+}
+
+/* ⬇️ Scrollbar Styling */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5e5e5e;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+}
