@@ -34,9 +34,9 @@ function App() {
             case 'membership':
                 return <MembershipPage />;
             case 'team-dashboard':
-                return isAuthenticated && userRole === 'team' ? <TeamDashboardPage /> : <HomePage />;
+                return <TeamDashboardPage />;
             case 'admin-dashboard':
-                return isAuthenticated && userRole === 'admin' ? <AdminDashboardPage /> : <HomePage />;
+                return <AdminDashboardPage />;
             default:
                 return <HomePage />;
         }
